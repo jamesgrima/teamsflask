@@ -26,7 +26,7 @@ def consumeMessages():
         for message in queue.receive_messages():
             print(message.body)
             createMessage(json.loads(message.body))
-            #message.delete()
+            message.delete()
 
 
 if __name__ == '__main__':
