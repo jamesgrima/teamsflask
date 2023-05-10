@@ -16,7 +16,6 @@ def createMessage(messageDict):
     teamsMessage.addSection(messageSection)
     teamsMessage.send()
 
-
 @app.route("/message", methods=['POST'])
 def consumeMessages():
         sqs = boto3.resource('sqs')
@@ -27,7 +26,6 @@ def consumeMessages():
             print(message.body)
             createMessage(json.loads(message.body))
             message.delete()
-
 
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
